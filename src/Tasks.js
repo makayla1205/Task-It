@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
-import { FaSquarePlus, FaPlus } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa6";
 import { FaTrashAlt } from "react-icons/fa";
 
 function Tasks({lists, setLists, setActiveList, activeList}) {
@@ -74,6 +74,7 @@ function Tasks({lists, setLists, setActiveList, activeList}) {
                         if(obj.list_id.id === activeList.id) {
                         return <div key={obj.id} className='task-item'><div><input className="" onChange={() => handleCheckbox(obj)} type="checkbox" checked={obj.completed}/>{obj.name}</div><button onClick={() => handleDeleteTask(obj)} className='action-btn'><FaTrashAlt size="1.2em"/></button></div>
                         }
+                        return null
                     })}
                 </div>
             </>
