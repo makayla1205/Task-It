@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Lists from './Lists';
+import Tasks from './Tasks';
 
 function App() {
+  const [lists, setLists ] = useState([
+    {id: 1, name: "Grocery"},
+    {id: 2, name: "Reminders"},
+  ])
+  const [activeList, setActiveList] = useState()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='split'>
+        <div className='sidebar'>
+          < Lists lists={lists} setLists={setLists} setActiveList={setActiveList} activeList={activeList} />
+        </div>
+        <div className='main'>
+          <Tasks lists={lists} setLists={setLists} setActiveList={setActiveList} activeList={activeList}/>
+        </div>
+      </div>
     </div>
   );
 }
